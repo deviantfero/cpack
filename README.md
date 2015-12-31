@@ -9,3 +9,6 @@ information regarding the day and the packages.
 ### Installation
 
 More info to be provided soon.
+
+### Status
+* need to find an order in which the data is provided so i can assign it correctly
