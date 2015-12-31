@@ -16,4 +16,4 @@ More info to be provided soon.
 
 i.e RR34312223KR will be the html and RR34312223KR.cpk will be the data for the program to showin the UI
 
-![progress_image](http://imgur.com/DlTco1o)
+![progress_image](http://i.imgur.com/DlTco1o.png?1)
