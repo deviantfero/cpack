@@ -9,11 +9,11 @@
 >
 
 ron>
-Dec 04, 2015>
+Dec 08, 2015>
 
 tron>
  class="hint>
-07:24 pm>
+08:46 am>
 
 i>
 >
@@ -24,17 +24,17 @@ i>
 >
 
 ron>
-Arrival at Facility>
+Arrival at inward office of exchange>
 
 an class="timeline-well>
-DHL Global Mail Asia>
+Korea Post>
 
 pa>
 >
 
 tron>
  class="hint>
-Frankfurt, Germany>
+GBLALA>
 
 i>
 >
@@ -49,11 +49,11 @@ i>
 >
 
 ron>
-Dec 04, 2015>
+Dec 02, 2015>
 
 tron>
  class="hint>
-10:21 am>
+02:32 pm>
 
 i>
 >
@@ -64,17 +64,17 @@ i>
 >
 
 ron>
-Arrival at Destination Country>
+>
 
 an class="timeline-well>
-DHL Global Mail Asia>
+Korea Post>
 
 pa>
 >
 
 tron>
  class="hint>
-DEFRAA, Germany>
+INCHEON>
 
 i>
 >
@@ -89,11 +89,11 @@ i>
 >
 
 ron>
-Dec 04, 2015>
+Dec 02, 2015>
 
 tron>
  class="hint>
-12:00 am>
+02:29 pm>
 
 i>
 >
@@ -104,17 +104,17 @@ i>
 >
 
 ron>
-Processing at Destination - Frankfurt, 19:24 (LT) ARRIVED AT TERMINAL LOCATION>
+Departure from outward office of exchange>
 
 an class="timeline-well>
-DHL Global Mail Asia>
+Korea Post>
 
 pa>
 >
 
 tron>
  class="hint>
-Germany>
+INTERNATIONAL POST OFFICE>
 
 i>
 >
@@ -129,11 +129,11 @@ i>
 >
 
 ron>
-Dec 04, 2015>
+Dec 01, 2015>
 
 tron>
  class="hint>
-12:00 am>
+12:17 am>
 
 i>
 >
@@ -144,17 +144,17 @@ i>
 >
 
 ron>
-Arrived at Destination - DEFRAA, 10:21 (LT) ARRIVAL AT DESTINATION COUNTRY>
+>
 
 an class="timeline-well>
-DHL Global Mail Asia>
+Korea Post>
 
 pa>
 >
 
 tron>
  class="hint>
-Germany>
+INTERNATIONAL POST OFFICE>
 
 i>
 >
@@ -169,11 +169,11 @@ i>
 >
 
 ron>
-Nov 28, 2015>
+Nov 30, 2015>
 
 tron>
  class="hint>
-05:14 am>
+11:15 pm>
 
 i>
 >
@@ -184,17 +184,17 @@ i>
 >
 
 ron>
-Processing at Facility>
+>
 
 an class="timeline-well>
-DHL Global Mail Asia>
+Korea Post>
 
 pa>
 >
 
 tron>
  class="hint>
-SGSINE, Singapore>
+anyang mail center>
 
 i>
 >
@@ -209,11 +209,11 @@ i>
 >
 
 ron>
-Nov 27, 2015>
+Nov 30, 2015>
 
 tron>
  class="hint>
-08:29 pm>
+06:27 pm>
 
 i>
 >
@@ -224,17 +224,17 @@ i>
 >
 
 ron>
-Departed Origin Facility>
+>
 
 an class="timeline-well>
-DHL Global Mail Asia>
+Korea Post>
 
 pa>
 >
 
 tron>
  class="hint>
-Singapore, Singapore>
+anyang mail center>
 
 i>
 >
@@ -249,11 +249,11 @@ i>
 >
 
 ron>
-Nov 27, 2015>
+Nov 30, 2015>
 
 tron>
  class="hint>
-07:27 pm>
+06:09 pm>
 
 i>
 >
@@ -264,17 +264,17 @@ i>
 >
 
 ron>
-Processing at Facility>
+>
 
 an class="timeline-well>
-DHL Global Mail Asia>
+Korea Post>
 
 pa>
 >
 
 tron>
  class="hint>
-Deutsche Post Singapore>
+SL.ORYU>
 
 i>
 >
@@ -289,11 +289,11 @@ i>
 >
 
 ron>
-Nov 27, 2015>
+Nov 30, 2015>
 
 tron>
  class="hint>
-09:25 am>
+05:32 pm>
 
 i>
 >
@@ -304,177 +304,17 @@ i>
 >
 
 ron>
-Processing at Facility>
+Posting/Collection>
 
 an class="timeline-well>
-DHL Global Mail Asia>
+Korea Post>
 
 pa>
 >
 
 tron>
  class="hint>
-Singapore, Singapore>
-
-i>
->
-
-i>
->
-
->
->
->
- class="timeline-time>
->
-
-ron>
-Nov 27, 2015>
-
-tron>
- class="hint>
-08:28 am>
-
-i>
->
-
-i>
- class="timeline-icon>
- class="timeline-content>
->
-
-ron>
-Arrival at Facility>
-
-an class="timeline-well>
-DHL Global Mail Asia>
-
-pa>
->
-
-tron>
- class="hint>
-Singapore, Singapore>
-
-i>
->
-
-i>
->
-
->
->
->
- class="timeline-time>
->
-
-ron>
-Nov 27, 2015>
-
-tron>
- class="hint>
-12:00 am>
-
-i>
->
-
-i>
- class="timeline-icon>
- class="timeline-content>
->
-
-ron>
-Processing at Destination - Deutsche Post Singapore, 19:27 (LT) PROCESSED SORT FACILITY>
-
-an class="timeline-well>
-DHL Global Mail Asia>
-
-pa>
->
-
-tron>
- class="hint>
-Germany>
-
-i>
->
-
-i>
->
-
->
->
->
- class="timeline-time>
->
-
-ron>
-Nov 27, 2015>
-
-tron>
- class="hint>
-12:00 am>
-
-i>
->
-
-i>
- class="timeline-icon>
- class="timeline-content>
->
-
-ron>
-Received &amp; Dispatched - Singapore, 09:25 (LT) ENCODED>
-
-an class="timeline-well>
-DHL Global Mail Asia>
-
-pa>
->
-
-tron>
- class="hint>
-Singapore>
-
-i>
->
-
-i>
->
-
->
->
->
- class="timeline-time>
->
-
-ron>
-Nov 26, 2015>
-
-tron>
- class="hint>
-10:03 pm>
-
-i>
->
-
-i>
- class="timeline-icon>
- class="timeline-content>
->
-
-ron>
-SUBMITTED>
-
-an class="timeline-well>
-DHL Global Mail Asia>
-
-pa>
->
-
-tron>
- class="hint>
-Singapore, Singapore>
+SL.ORYU>
 
 i>
 >
@@ -516,3 +356,63 @@ i>
 
 rip>
 function googleTranslateElementInit() {
+
+	new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false, multilanguagePage: true}, 'google_translate_element');
+
+}
+
+>
+
+crip>
+>
+
+ript type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit>
+>
+
+crip>
+>
+
+ript src="https://www.google.com/recaptcha/api.js>
+>
+
+crip>
+>
+
+i>
+>
+
+i>
+>
+
+ript src="/ca/js/lib/moment.min-d3e75294221603d2720b916e7bb3c41c.js>
+>
+
+crip>
+>
+
+ript src="/ca/js/page/once_off_tracking-da45b88cb3dbd4cef21b8b156608bcc3.js>
+>
+
+crip>
+>
+
+rip>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-28584597-2', 'aftership.com');
+
+ga('send', 'pageview');>
+
+crip>
+>
+
+od>
+>
+
+tm>

@@ -48,8 +48,12 @@ status init_status() {
 }
 
 void get_time( status* new, FILE* read_file ) {
+	int i = 0;
 	while( !feof( read_file ) ){
-		if( fscanf( read_file, "%s %d, %d", new->month, &(new->day), &(new->year) ) == 3 )
-			printf( "hello!" );
+		if( fscanf( read_file, "%s %d, %d", new->month, &(new->day), &(new->year) ) == 3 ) {
+			//to be changed
+			printf( "%s %d, %d - event %d\n", new->month, new->day, new->year, i );
+			i++;
+		}
 	}
 }
