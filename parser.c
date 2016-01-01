@@ -2,23 +2,23 @@
 //and will fix the file to be more readable
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 80
+#include <string.h>
+#define MAX 300
+#define MAX_EVENTS 20
+#define MAX_DESCR 50
 
-typedef struct {
-	char* month;
-	int day;
-	int year;
-	char* time;
-	char* info;
-	char* place;
-}status;
-
-status init_status();
-void get_time( status* new, FILE* read_file );
+void clean_character( char rm_char, FILE* read_file );
+void remove_newlines( FILE* read_file );
+void clean_file_write( FILE* read_file, FILE* write_file );
 
 int main( int argc, char* argv[] ) {
+	if( argc < 2 ) {
+		printf( "No output filename specified\n" );
+		exit(1);
+	}
 	int file_pos;
-	FILE* read_file = fopen( "./result.cpk", "r+" );
+	FILE* read_file = fopen( "./temp.cpk", "r+" );
+	FILE* write_file = fopen( argv[1], "w+" );
 	while( !feof( read_file ) ) {
 		if( fgetc( read_file ) == '<' ) {
 			fputs( ">\n", read_file );
@@ -32,28 +32,40 @@ int main( int argc, char* argv[] ) {
 		}
 	}
 	rewind( read_file );
-	status new = init_status();
-	get_time( &new, read_file );
+	clean_character( '>', read_file );
+	rewind( read_file );
+	remove_newlines( read_file );
+	clean_file_write( read_file, write_file );
 }
 
-status init_status() {
-	status new;
-	new.month = malloc( MAX );
-	new.day   = 0;
-	new.year  = 0;
-	new.time  = malloc( MAX );
-	new.info  = malloc( MAX );
-	new.place = malloc( MAX );
-	return new;
+void clean_character( char rm_char, FILE* read_file ) {
+	while( !feof( read_file ) ) {
+		if( fgetc( read_file ) == rm_char ) {
+			fseek( read_file, -1, SEEK_CUR );
+			fputc( ' ', read_file );
+		}
+	}
 }
 
-void get_time( status* new, FILE* read_file ) {
-	int i = 0;
-	while( !feof( read_file ) ){
-		if( fscanf( read_file, "%s %d, %d", new->month, &(new->day), &(new->year) ) == 3 ) {
-			//to be changed
-			printf( "%s %d, %d - event %d\n", new->month, new->day, new->year, i );
-			i++;
+void remove_newlines( FILE* read_file ) {
+	char* string = malloc( MAX );
+	while( !feof( read_file ) ) {
+		fgets( string, MAX, read_file );
+		if( string[0] == '\n' || string[1] == '\n' ) {
+			fseek( read_file, -1, SEEK_CUR );
+			fputc( ' ', read_file );
+		}
+	}
+}
+
+void clean_file_write( FILE* read_file, FILE* write_file ) {
+	rewind( read_file );
+	char* string = malloc( MAX );
+	while( !feof( read_file ) ) {
+		fgets( string, MAX, read_file );
+		if( strlen( string ) < MAX_DESCR && string[0] != ' ' ){
+			fputs( string, write_file );
+			printf( "%s", string );
 		}
 	}
 }
