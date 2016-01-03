@@ -11,9 +11,9 @@ information regarding the day and the packages.
 More info to be provided soon.
 
 ### Status
-* need to find an order in which the data is provided so i can assign it correctly
+* need to change directories to make it invisible to the user, something like ~/.tracking where the files could be dumped
 * will have a separate file for tracking number, that way the info can be deleted when necessary, this info will be in ~/.cpack
 
 i.e RR34312223KR will be the html and RR34312223KR.cpk will be the data for the program to showin the UI
 
-![progress_image](http://i.imgur.com/DlTco1o.png?1)
+![progress_image](http://i.imgur.com/dPrqO60.png?1)
