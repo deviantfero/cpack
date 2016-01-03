@@ -7,9 +7,11 @@
 #define MAX_EVENTS 20
 #define MAX_DESCR 50
 
+int count_lines( FILE* write_file );
 void clean_character( char rm_char, FILE* read_file );
 void remove_newlines( FILE* read_file );
 void clean_file_write( FILE* read_file, FILE* write_file );
+int detect_character( char* string, char detect );
 
 int main( int argc, char* argv[] ) {
 	if( argc < 2 ) {
@@ -36,6 +38,11 @@ int main( int argc, char* argv[] ) {
 	rewind( read_file );
 	remove_newlines( read_file );
 	clean_file_write( read_file, write_file );
+	if( count_lines( write_file ) <= 2 ) {
+		fclose( write_file );
+		write_file = fopen( argv[1], "w+" );
+		fputs( "No information was found at the time\n", write_file );
+	}
 }
 
 void clean_character( char rm_char, FILE* read_file ) {
@@ -63,9 +70,28 @@ void clean_file_write( FILE* read_file, FILE* write_file ) {
 	char* string = malloc( MAX );
 	while( !feof( read_file ) ) {
 		fgets( string, MAX, read_file );
-		if( strlen( string ) < MAX_DESCR && string[0] != ' ' ){
+		if( strlen( string ) < MAX_DESCR && string[0] != ' ' && !detect_character( string, '{' ) ){
 			fputs( string, write_file );
 			printf( "%s", string );
 		}
 	}
+}
+
+int count_lines( FILE* write_file ) {
+	int i = 0;
+	rewind( write_file );
+	while( !feof( write_file ) ) {
+		if( fgetc( write_file ) == '\n' )
+			i++;
+	}
+	printf( "%d\n", i );
+	return i;
+}
+
+int detect_character( char* string, char detect ) {
+	for( int i = 0; i < strlen( string ); i++ ) {
+		if( string[i] == detect )
+			return 1;
+	}
+	return 0;
 }
