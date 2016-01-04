@@ -13,6 +13,7 @@ More info to be provided soon.
 ### Status
 * need to change directories to make it invisible to the user, something like ~/.tracking where the files could be dumped
 * will have a separate file for tracking number, that way the info can be deleted when necessary, this info will be in ~/.cpack
+* need to put Aliases on packages, A-B-C etc. already has it modified on the first check, need to implement it into update
 
 i.e RR34312223KR will be the html and RR34312223KR.cpk will be the data for the program to showin the UI
 

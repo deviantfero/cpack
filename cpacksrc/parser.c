@@ -2,6 +2,7 @@
 //and will fix the file to be more readable
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
 #define MAX 300
 #define MAX_EVENTS 20
@@ -14,6 +15,8 @@ void clean_file_write( FILE* read_file, FILE* write_file );
 int detect_character( char* string, char detect );
 
 int main( int argc, char* argv[] ) {
+	char* tracking_dir = strcat( getenv( "HOME" ), "/.tracking" );
+	chdir( tracking_dir );
 	if( argc < 2 ) {
 		printf( "No output filename specified\n" );
 		exit(1);
