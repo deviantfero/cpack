@@ -46,6 +46,7 @@ int main( int argc, char* argv[] ) {
 		write_file = fopen( argv[1], "w+" );
 		fputs( "No information was found at the time\n", write_file );
 	}
+	return count_lines( write_file );
 }
 
 void clean_character( char rm_char, FILE* read_file ) {
