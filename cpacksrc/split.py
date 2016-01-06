@@ -48,10 +48,10 @@ def splitfile( filename ):
     if not os.path.isfile( tracking_dir + "/.parser" ):
         if os.path.isfile( "./parser.c" ):
             print( "compiling from test dir" )
-            call( [ "cc", "-o", tracking_dir + ".parser", "./parser.c" ] )
+            call( [ "cc", "--std=c99", "-o", tracking_dir + ".parser", "./parser.c" ] )
         else:
             print( "compiling from /usr/local/bin" )
-            call( [ "cc", "-o", tracking_dir + ".parser", "/usr/local/bin/parser.c" ] )
+            call( [ "cc", "--std=c99", "-o", tracking_dir + ".parser", "/usr/local/bin/parser.c" ] )
 
     print( "PASS2::" )
     call( [ tracking_dir + ".parser", filename ] )
