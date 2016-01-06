@@ -27,7 +27,11 @@ def splitfile( filename ):
         full_bak = letter_get.read()
         #call( ["rm", tracking_dir + filename] )
         refresh_status = True
-
+    print( "TESTING CONNECTION::" )
+    internet = call( ["ping", "-c", "1", "google.com"] )
+    if( internet == 2 ):
+        print( "NO INTERNET::" )
+        return
     print( "DOWNLOADING::" )
     call( [ "wget", "-O", tracking_dir + "/" + filename, "http://track.aftership.com/" + filename ] )
     print( "DONE::" )
@@ -37,7 +41,7 @@ def splitfile( filename ):
     #this joins the lines stored as a list with a '\n'
     #in between, so it can be split by string method split()
     result_list = html_text.split( "<div" )
-    print( result_list ) #debug line
+    print( "PASS0::" ) #debug line
     print( "PASS1::" )
     result_list = [ word for word in result_list if "timeline" in word or "hint" in word ]
     for word in result_list:
@@ -51,7 +55,7 @@ def splitfile( filename ):
             call( [ "cc", "--std=c99", "-o", tracking_dir + ".parser", "./parser.c" ] )
         else:
             print( "compiling from /usr/local/bin" )
-            call( [ "cc", "--std=c99", "-o", tracking_dir + ".parser", "/usr/local/bin/parser.c" ] )
+            call( [ "cc", "--std=c99", "-o", tracking_dir + ".parser", "/usr/local/bin/cpacksrc/parser.c" ] )
 
     print( "PASS2::" )
     call( [ tracking_dir + ".parser", filename ] )
@@ -60,20 +64,26 @@ def splitfile( filename ):
     info = result_file.read()
 
     print( "INFO FETCH COMPLETE::" )
+    print( info )
     result_file.close()
     info_list = info.split( "\n", len(info) )
     info = "" #clean up info is next
 
     print( "GETTING DATES::" )
-    dates = open( tracking_dir + filename + ".dte", "w" )
-    for word in info_list:
-        if( "," in word and len(word) < 18 ):
-            info += "\n" + word + "\n"
-            dates.write( word + "\n" )
-        else:
-            info += word + "\n"
 
-    dates.close()
+    if( not os.path.isfile( tracking_dir + filename + ".dte" ) ):
+        dates = open( tracking_dir + filename + ".dte", "w" )
+
+    if( len( info_list ) > 4 ):
+        dates = open( tracking_dir + filename + ".dte", "w" )
+        for word in info_list:
+            if( "," in word and len(word) < 18 ):
+                info += "\n" + word + "\n"
+                dates.write( word + "\n" )
+            else:
+                info += word + "\n"
+        dates.close()
+
     print( file_list )
     number = 65
     letter = []
@@ -99,13 +109,13 @@ def splitfile( filename ):
 
     if "captcha" in scan_captcha and len(info) < 50:
         if( "There's a Cap" in full_bak ):
-            print( full_bak )
+            print( "USING FULL BACK - STILL CAPTCHA::" )
             result_file.write( full_bak )
         else:
-            result_file.write( "There's a Captcha! - no info fetched\n" + full_bak )
+            print( "CAPTCHA ALERT::" )
+            result_file.write( "\nThere's a Captcha! - no info fetched" + full_bak )
     else:
         result_file.write( info )
-    print( info )
     call( ["rm", tracking_dir + "temp.cpk"] )
 
 if __name__ == "__main__":

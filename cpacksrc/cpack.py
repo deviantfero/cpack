@@ -160,6 +160,7 @@ class mainWindow( Gtk.Window ):
     def mark_calendar( self, active_dates ):
         current_date = self.calendar.get_date()
         print( current_date )
+        print( active_dates.full_dates )
         for word in active_dates.full_dates:
             if( word[0] == current_date[0] and word[1] == current_date[1] ):
                 self.calendar.mark_day( word[2] )
