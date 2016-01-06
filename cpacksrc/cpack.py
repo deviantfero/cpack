@@ -14,6 +14,7 @@ dict = { "Dec": 11, "Nov": 10, "Oct": 9, "Sep": 8, "Aug": 7, "Jul": 6, "Jun": 5,
 def get_active_info( directory ):
     active_info = open( directory, "r" )
     string = active_info.read()
+    active_info.close()
     return string
 
 def get_combo_text( directory ):
@@ -35,6 +36,7 @@ class dates_init():
     def __init__( self, date_filepath ):
         date_file = open( date_filepath, "r" )
         self.full_dates = [ line for line in date_file ]
+        self.full_txt = self.full_dates
         date_file.close() #--we don't need the file open anymore--#
         self.full_dates = [ line.split( " ", len( line ) ) for line in self.full_dates ]
         self.months = [ word[0] for word in self.full_dates ]
@@ -100,6 +102,7 @@ class mainWindow( Gtk.Window ):
 
         self.calendar = Gtk.Calendar()
         self.calendar.connect( "month-changed", self.month_refresh_marks )
+        self.calendar.connect( "day-selected", self.day_selected_show )
         
         self.combo_list = Gtk.ListStore( str )
         for word in self.files.file_list:
@@ -162,6 +165,25 @@ class mainWindow( Gtk.Window ):
                 self.calendar.mark_day( word[2] )
             else:
                 self.calendar.unmark_day( word[2] )
+    
+    def day_selected_show( self, calendar ):
+        current_date = self.calendar.get_date()
+        if self.active_dates_status:
+            if self.calendar.get_day_is_marked( current_date[2] ):
+                print( "event here" )
+                info = get_active_info( self.tracking_directory + self.tracking_active )
+                info = info.split( "\n\n", len( info ) )
+                day_event = ""
+                num = 0
+                for x in range( 0, len( self.active_dates.full_dates ) ):
+                    if( self.active_dates.full_dates[x][2] == current_date[2]  ):
+                        num = x
+                for x in range( 0, len( info ) ):
+                    if self.active_dates.full_txt[num] in info[x]:
+                        day_event +=  info[x] + "\n\n"
+                self.info_label.set_text( day_event )
+            else:
+                self.combo_change( self.combo )
 
     def month_refresh_marks( self, calendar ):
         self.calendar.clear_marks()

@@ -25,7 +25,7 @@ def splitfile( filename ):
         letter_get = open( tracking_dir + filename )
         letter_bak = letter_get.readline( 1 )
         full_bak = letter_get.read()
-        call( ["rm", tracking_dir + filename] )
+        #call( ["rm", tracking_dir + filename] )
         refresh_status = True
 
     print( "DOWNLOADING::" )
@@ -97,7 +97,7 @@ def splitfile( filename ):
     temp_cpk = open( tracking_dir + "temp.cpk", "r" )
     scan_captcha = temp_cpk.read()
 
-    if "captcha" in scan_captcha:
+    if "captcha" in scan_captcha and len(info) < 50:
         if( "There's a Cap" in full_bak ):
             print( full_bak )
             result_file.write( full_bak )
@@ -105,7 +105,7 @@ def splitfile( filename ):
             result_file.write( "There's a Captcha! - no info fetched\n" + full_bak )
     else:
         result_file.write( info )
-    #print( info )
+    print( info )
     call( ["rm", tracking_dir + "temp.cpk"] )
 
 if __name__ == "__main__":
