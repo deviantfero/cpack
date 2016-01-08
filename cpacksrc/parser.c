@@ -43,7 +43,7 @@ int main( int argc, char* argv[] ) {
 	clean_file_write( read_file, write_file );
 	if( count_lines( write_file ) <= 2 ) {
 		fclose( write_file );
-		write_file = fopen( argv[1], "w+" );
+		write_file = fopen( argv[1], "w" );
 		fputs( "No information was found at the time\n", write_file );
 	}
 	return count_lines( write_file );

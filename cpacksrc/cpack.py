@@ -140,11 +140,16 @@ class mainWindow( Gtk.Window ):
         print( "refresh" )
         self.calendar.clear_marks()
         self.tracking_active = self.files.file_list[self.combo.get_active()]
-        split.splitfile( self.tracking_active )
+        number = split.splitfile( self.tracking_active )
         info = get_active_info( self.tracking_directory + self.tracking_active )
         self.active_dates = dates_init( self.tracking_directory + self.tracking_active + ".dte" )
         self.mark_calendar( self.active_dates )
-        self.info_label.set_text( self.tracking_active + "\n" + info )
+        if( number == 0 ):
+            self.info_label.set_text( self.tracking_active + "\n" + info )
+        if( number == 1 ):
+            self.info_label.set_text( self.tracking_active + "\nNO INTERNET\n" + info )
+        if( number == 2 ):
+            self.info_label.set_text( self.tracking_active + "\nThere's Captcha\n" + info )
 
     def add_action( self, add_button ):
         print( "add" )

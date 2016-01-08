@@ -31,7 +31,7 @@ def splitfile( filename ):
     internet = call( ["ping", "-c", "1", "google.com"] )
     if( internet == 2 ):
         print( "NO INTERNET::" )
-        return
+        return 1
     print( "DOWNLOADING::" )
     call( [ "wget", "-O", tracking_dir + "/" + filename, "http://track.aftership.com/" + filename ] )
     print( "DONE::" )
@@ -103,20 +103,19 @@ def splitfile( filename ):
     if refresh_status:
         result_file.writelines( letter_bak )
     else:
-        result_file.writelines( chr( number ) + "\n" )
+        result_file.writelines( chr( number ) )
     temp_cpk = open( tracking_dir + "temp.cpk", "r" )
     scan_captcha = temp_cpk.read()
 
     if "captcha" in scan_captcha and len(info) < 50:
-        if( "There's a Cap" in full_bak ):
-            print( "USING FULL BACK - STILL CAPTCHA::" )
-            result_file.write( full_bak )
-        else:
-            print( "CAPTCHA ALERT::" )
-            result_file.write( "\nThere's a Captcha! - no info fetched" + full_bak )
+        print( "CAPTCHA ALERT::" )
+        call( ["rm", tracking_dir + "temp.cpk"] )
+        result_file.write( full_bak )
+        return 2
     else:
         result_file.write( info )
     call( ["rm", tracking_dir + "temp.cpk"] )
+    return 0
 
 if __name__ == "__main__":
     splitfile( argv[1] )
