@@ -1,8 +1,17 @@
 #!/usr/bin/python
 from sys import argv
 import os.path
+import urllib.request
 from os import walk
 from subprocess import call
+
+hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
+       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+       'Accept-Encoding': 'none',
+       'Accept-Language': 'en-US,en;q=0.8',
+       'Connection': 'keep-alive'}
+
 
 def get_number_files( directory ):
     file_list = []
@@ -33,7 +42,13 @@ def splitfile( filename ):
         print( "NO INTERNET::" )
         return 1
     print( "DOWNLOADING::" )
-    call( [ "wget", "-O", tracking_dir + "/" + filename, "http://track.aftership.com/" + filename ] )
+    req = urllib.request.Request( "http://track.aftership.com/" + filename, None, hdr )
+    download = urllib.request.urlopen( req )
+    string_htm = download.read()
+    string_htm = str( string_htm )
+    first_write = open( tracking_dir + filename, "w" )
+    first_write.write( string_htm )
+    first_write.close()
     print( "DONE::" )
     html = open( tracking_dir + filename, "r" )
     result_file = open( tracking_dir + "temp.cpk", "w+" )
@@ -45,6 +60,7 @@ def splitfile( filename ):
     print( "PASS1::" )
     result_list = [ word for word in result_list if "timeline" in word or "hint" in word ]
     for word in result_list:
+        print( word )
         result_file.write( word )
     result_file.close()
     html.close()
@@ -57,8 +73,11 @@ def splitfile( filename ):
             print( "compiling from /usr/local/bin" )
             call( [ "cc", "--std=c99", "-o", tracking_dir + ".parser", "/usr/local/bin/cpacksrc/parser.c" ] )
 
-    print( "PASS2::" )
-    call( [ tracking_dir + ".parser", filename ] )
+    check = open( tracking_dir + "temp.cpk" )
+    if( "timeline-" in check.read() ):
+        #weird bug here
+        print( "PASS2::" )
+        call( [ tracking_dir + ".parser", filename ] )
     print( "FINISHED::" )
     result_file = open( tracking_dir + filename, "r" )
     info = result_file.read()

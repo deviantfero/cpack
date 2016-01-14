@@ -45,6 +45,7 @@ int main( int argc, char* argv[] ) {
 		fclose( write_file );
 		write_file = fopen( argv[1], "w" );
 		fputs( "No information was found at the time\n", write_file );
+		return count_lines( write_file );
 	}
 	return count_lines( write_file );
 }
@@ -71,12 +72,12 @@ void remove_newlines( FILE* read_file ) {
 
 void clean_file_write( FILE* read_file, FILE* write_file ) {
 	rewind( read_file );
-	char* string = malloc( MAX );
+	char* string = malloc( 10000 );
 	while( !feof( read_file ) ) {
-		fgets( string, MAX, read_file );
+		fgets( string, 10000, read_file );
 		if( strlen( string ) < MAX_DESCR && string[0] != ' ' && !detect_character( string, '{' ) ){
 			fputs( string, write_file );
-			printf( "%s", string );
+			printf( "%shehehe", string );
 		}
 	}
 }
