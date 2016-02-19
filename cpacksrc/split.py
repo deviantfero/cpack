@@ -36,11 +36,6 @@ def splitfile( filename ):
         full_bak = letter_get.read()
         #call( ["rm", tracking_dir + filename] )
         refresh_status = True
-    print( "TESTING CONNECTION::" )
-    internet = call( ["ping", "-c", "1", "google.com"] )
-    if( internet == 2 ):
-        print( "NO INTERNET::" )
-        return 1
     print( "DOWNLOADING::" )
     req = urllib.request.Request( "http://track.aftership.com/" + filename, None, hdr )
     download = urllib.request.urlopen( req )
