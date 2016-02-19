@@ -16,7 +16,7 @@ def main_update():
         if( content_old != content_new ):
             content_new = content_new.split( "\n\n", len( content_new ) )
             to_notify = content_new.pop( 0 )
-            if( "SVSALA" in to_notify and "Cap" not in to_notify ):
+            if( "SVSALA" in to_notify or "elivery" in to_notify ):
                 call( [ "notify-send", word, to_notify ] )
 
         
