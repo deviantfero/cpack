@@ -61,7 +61,7 @@ class mainWindow( Gtk.Window ):
         self.tracking_active = ""
         self.info_list = []
 
-        Gtk.Window.__init__( self, title="cpack v1.0" )
+        Gtk.Window.__init__( self, title="cpack v1.2" )
         self.set_border_width( 10 )
         self.set_default_size( 600, 100 )
 
