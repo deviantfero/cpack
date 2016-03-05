@@ -4,6 +4,7 @@ import os.path
 from os import walk
 from subprocess import call
 import split
+from operator import itemgetter
 from gi import require_version
 require_version( "Gtk", "3.0" )
 from gi.repository import Gtk, GLib
@@ -27,9 +28,21 @@ class filelistget():
     def __init__( self, directory ):
         self.directory = directory
         self.file_list = []
+        self.list_to_sort = []
+        temp_list = []
         for ( dirpath, dirnames, filenames ) in walk( self.directory ):
             self.file_list.extend( filenames )
         self.file_list = [ word for word in self.file_list if not "." in word ]
+        for word in self.file_list:
+            temp_letter = get_combo_text( self.directory + word )
+            temp_list = [ word, temp_letter ]
+            self.list_to_sort.append( temp_list )
+        self.file_list = []
+        self.list_to_sort = sorted(self.list_to_sort, key=itemgetter(1))
+        for x in range( 0, len( self.list_to_sort ) ):
+            self.file_list.append( self.list_to_sort[x][0] )
+
+
 
 class dates_init():
     
