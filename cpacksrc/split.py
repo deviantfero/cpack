@@ -53,7 +53,9 @@ def splitfile( filename ):
     result_list = html_text.split( "<div" )
     print( "PASS0::" ) #debug line
     print( "PASS1::" )
-    result_list = [ word for word in result_list if "timeline" in word or "hint" in word ]
+    result_list = [ word for word in result_list if "checkpoint_" in word or "hint" in word ]
+    #word sorrounding information was changed from "timeline" to "checkpoint__<something>"
+    #therefore a change in the word to be found was to be made
     for word in result_list:
         print( word )
         result_file.write( word )
@@ -69,7 +71,9 @@ def splitfile( filename ):
             call( [ "cc", "--std=c99", "-o", tracking_dir + ".parser", "/usr/local/bin/cpacksrc/parser.c" ] )
 
     check = open( tracking_dir + "temp.cpk" )
-    if( "timeline-" in check.read() ):
+    if( "checkpoint_" in check.read() ):
+        #word sorrounding information was changed from "timeline" to "checkpoint__<something>"
+        #therefore a change in the word to be found was to be made
         #weird bug here
         print( "PASS2::" )
         call( [ tracking_dir + ".parser", filename ] )
