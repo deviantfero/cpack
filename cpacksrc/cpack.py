@@ -56,6 +56,7 @@ class dates_init():
         self.days   = [ word[1] for word in self.full_dates ]
         daystring = "".join( self.days )
         self.days = daystring.split( ",", len( daystring ) )
+        print( self.full_dates )
         self.days.pop()
         self.days   = [ int( word ) for word in self.days ]
         self.years  = [ int( word[2] ) for word in self.full_dates ]
