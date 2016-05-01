@@ -53,7 +53,7 @@ def splitfile( filename ):
     result_list = html_text.split( "<div" )
     print( "PASS0::" ) #debug line
     print( "PASS1::" )
-    result_list = [ word for word in result_list if "checkpoints" in word or "hint" in word or "checkpoint__"]
+    result_list = [ word for word in result_list if "checkpoint" in word or "hint" in word ]
     #addesd some filter tags to avoid having useless info in the textfile
     result_list = [ word for word in result_list if "sr-only" not in word and "media-" not in word ]
     result_list = [ word for word in result_list if "text-xs" not in word and "aftership.com" not in word ]
