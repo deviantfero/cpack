@@ -37,7 +37,12 @@ def splitfile( filename ):
         #call( ["rm", tracking_dir + filename] )
         refresh_status = True
     print( "DOWNLOADING::" )
-    req = urllib.request.Request( "http://track.aftership.com/" + filename, None, hdr )
+    if( "KR" in filename[-2:] ):V
+       req = urllib.request.Request( "http://track.aftership.com/korea-post/" + filename, None, hdr )
+    elseif( "TH" in filename[-2:] ):V
+       req = urllib.request.Request( "http://track.aftership.com/thailand-post/" + filename, None, hdr )
+    else:
+       req = urllib.request.Request( "http://track.aftership.com/" + filename, None, hdr )
     download = urllib.request.urlopen( req )
     string_htm = download.read()
     string_htm = str( string_htm )
